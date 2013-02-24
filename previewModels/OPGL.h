@@ -23,6 +23,7 @@ class OPGL {
 		_angle[0] = 0;
 		_angle[1] = 0;
 	}
+	~OPGL();
 	
 	void onMouseClick( int button, int state, int x, int y );
 	

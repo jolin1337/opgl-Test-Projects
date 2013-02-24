@@ -1,4 +1,5 @@
 #include "OPGL.h" 
+#include <math.h>
 bool fullscreen = true;
 float mousePos[2] = { 0, 0 };
 GLvoid ResetWindowSize();
@@ -46,22 +47,25 @@ void OPGL::onResize(int w, int h) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45.0, (float)w / (float)h, 1.0, 200.0);
+	glMatrixMode(GL_MODELVIEW);
 }
 
 void OPGL::init() { 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING); 
 	glEnable(GL_LIGHT0);
-	glEnable(GL_NORMALIZE);
+	//glEnable(GL_NORMALIZE);
 	//glEnable(GL_COLOR_MATERIAL);
-	glShadeModel(GL_FLAT);
-	glClearColor( 0.7f, 0.9f, 1.0f, 1.0f );
+	//glShadeModel(GL_FLAT);
+	//glClearColor( 0.7f, 0.9f, 1.0f, 1.0f );
 	glutFullScreen();
 	Image* image = loadBMP("vtr.bmp");
 	_textureId = this->loadTexture(image);
 	delete image;
 
-	object=new OB();
+	object=OB::loadFromFile("obj.o");
+
+	/*object=new OB();
 	
 	object->Faces.push_back(new Vector(-BOX_SIZE / 2, BOX_SIZE / 2, -BOX_SIZE / 2));
 	object->Faces.push_back(new Vector(-BOX_SIZE / 2, BOX_SIZE / 2, BOX_SIZE / 2));
@@ -99,6 +103,18 @@ void OPGL::init() {
 	object->Faces.push_back(object->Faces[0]);
 	object->Faces.push_back(object->Faces[3]);
 	object->Faces.push_back(object->Faces[5]);
+	*/
+}
+OPGL::~OPGL(){
+	for(unsigned int i=0; i<object->Faces.size(); i++){
+		if(object->Faces[i])
+			delete object->Faces[i];
+		for(unsigned int j = 0; j < object->Faces.size(); j++)
+			if(j != i && object->Faces[j] == object->Faces[i])
+				object->Faces[j] = 0;
+		object->Faces[i] = 0;
+	}
+	delete object;
 }
 
 void OPGL::loop(int value) {
@@ -126,33 +142,41 @@ GLuint OPGL::loadTexture(Image* image) {
 }
 
 void OPGL::drawScene() {
+	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	glTranslatef(0.0f, 0.0f, -20.0f);
 	glScalef(1.9f, 1.9f, 1.9f);
 
-	GLfloat ambientLight[] = {0.3f, 0.3f, 0.3f, 1.0f};
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
-
-
 	glRotatef(-_angle[1]/4, 1.0f, 0.0f, 0.0f);
 	glRotatef(-_angle[0]/4, 0.0f, 1.0f, 0.0f);
 
-	GLfloat lightColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	GLfloat lightPos[] = {-2 * BOX_SIZE, BOX_SIZE, 4 * BOX_SIZE, 1.0f};
+	/*GLfloat lightColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+	GLfloat lightPos[] = {2 * BOX_SIZE * cos(_angle[0] * M_PI/180), 2*BOX_SIZE * sin(_angle[0] * M_PI/180), 4 * BOX_SIZE, 1.0f};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor);
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);*/
 
 	glBegin(GL_TRIANGLES);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	for( int i=0;i<(int)object->Faces.size();i++){
+	for(unsigned int i=0; i < object->Faces.size();i++){
+		if(i%3){
+			glColor3f(1.0f, 0.0f, 0.0f);
+			if(i + 2 < object->Faces.size()){
+				Vector v1 = *(object->Faces[i + 2]),
+				       v2 = *(object->Faces[i + 0]),
+				       v3 = *(object->Faces[i + 1]);
+				v2.sub(v1);
+				v3.sub(v1);
+				Vector n = v2.cross(v3);
+				n.normalize();
+				glNormal3f(n.x, n.y, n.z);
+			}
+		}
 		Vector *tmp=object->Faces[i];
 		glVertex3f( tmp->x, tmp->y, tmp->z );
 	}
 	glEnd();
+	
 	/*//Top face
 	glColor3f(1.0f, 1.0f, 0.0f);
 	glNormal3f(0.0, 1.0f, 0.0f);
