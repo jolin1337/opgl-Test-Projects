@@ -38,6 +38,7 @@ class OPGL {
 	
 	GLuint loadTexture(Image* image);
 
+	void drawFloor();
 	void drawScene();
 };
 #endif

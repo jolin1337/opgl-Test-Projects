@@ -1,7 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
 
-
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
 #include <GLUT/glut.h>
@@ -16,8 +15,8 @@ using namespace std;
 
 int main(int argc, char** argv) { 
 	glutInit(&argc, argv); 
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-	glutInitWindowSize(400, 400);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_STENCIL | GLUT_MULTISAMPLE);
+	glutInitWindowSize(600, 600);
 	
 	glutCreateWindow("RANDOM SHOT!");
 	init();

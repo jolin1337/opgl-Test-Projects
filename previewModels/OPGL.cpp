@@ -1,6 +1,6 @@
 #include "OPGL.h" 
 #include <math.h>
-bool fullscreen = true;
+bool fullscreen = false;
 float mousePos[2] = { 0, 0 };
 GLvoid ResetWindowSize();
 
@@ -54,16 +54,37 @@ void OPGL::init() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING); 
 	glEnable(GL_LIGHT0);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_TEXTURE_2D);
+	glLineWidth(3.0);
+
+	glMatrixMode(GL_PROJECTION);
+	gluPerspective( 45.0,	// fov
+					1.0,	// aspect ratio
+					20.0, 	// z near
+					100.0 	// z far
+	);
+	glMatrixMode(GL_MODELVIEW);
+	gluLookAt(0.0, 3.0, 6.0,	// eye 
+		0.0, 0.0, 0.0,			// center 
+		0.0, 1.0, 0.0);			// up direction 
+
+	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, 1);
+	glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 0.1);
+	glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 0.05);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
 	//glEnable(GL_NORMALIZE);
 	//glEnable(GL_COLOR_MATERIAL);
 	//glShadeModel(GL_FLAT);
 	//glClearColor( 0.7f, 0.9f, 1.0f, 1.0f );
-	glutFullScreen();
-	Image* image = loadBMP("vtr.bmp");
-	_textureId = this->loadTexture(image);
-	delete image;
+	if(fullscreen)
+		glutFullScreen();
+	//Image* image = loadBMP("resources/images/vtr.bmp");
+	//_textureId = this->loadTexture(image);
+	//delete image;
 
-	object=OB::loadFromFile("obj.o");
+	object=OB::loadFromFile("resources/rect.o");
 
 	/*object=new OB();
 	
@@ -122,6 +143,8 @@ void OPGL::loop(int value) {
 	//if (_angle > 360) {
 	//	_angle -= 360;
 	//}
+	_angle[0] += 2.0f;
+	_angle[0] += 1.0f;
 	glutPostRedisplay();
 	glutTimerFunc(25, update, 0);
 }
@@ -141,42 +164,85 @@ GLuint OPGL::loadTexture(Image* image) {
 	return textureId;
 }
 
-void OPGL::drawScene() {
-	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
+static GLfloat floorVertices[4][3] = {
+	{ -10.0, 0.0, 10.0 },
+	{ 10.0, 0.0, 10.0 },
+	{ 10.0, 0.0, -10.0 },
+	{ -10.0, 0.0, -10.0 },
+};
 
-	glTranslatef(0.0f, 0.0f, -20.0f);
-	glScalef(1.9f, 1.9f, 1.9f);
-
-	glRotatef(-_angle[1]/4, 1.0f, 0.0f, 0.0f);
-	glRotatef(-_angle[0]/4, 0.0f, 1.0f, 0.0f);
-
-	/*GLfloat lightColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-	GLfloat lightPos[] = {2 * BOX_SIZE * cos(_angle[0] * M_PI/180), 2*BOX_SIZE * sin(_angle[0] * M_PI/180), 4 * BOX_SIZE, 1.0f};
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor);
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);*/
+void OPGL::drawFloor(void) {
+	glEnable(GL_LIGHTING);
 
 	glBegin(GL_TRIANGLES);
-	for(unsigned int i=0; i < object->Faces.size();i++){
-		if(i%3){
-			glColor3f(1.0f, 0.0f, 0.0f);
-			if(i + 2 < object->Faces.size()){
-				Vector v1 = *(object->Faces[i + 2]),
-				       v2 = *(object->Faces[i + 0]),
-				       v3 = *(object->Faces[i + 1]);
-				v2.sub(v1);
-				v3.sub(v1);
-				Vector n = v2.cross(v3);
-				n.normalize();
-				glNormal3f(n.x, n.y, n.z);
+		glNormal3f(0.0,-1.0,0.0);
+		glVertex3fv(floorVertices[0]);
+		glVertex3fv(floorVertices[1]);
+		glVertex3fv(floorVertices[2]);
+		glNormal3f(0.0,-1.0,0.0);
+		glVertex3fv(floorVertices[0]);
+		glVertex3fv(floorVertices[2]);
+		glVertex3fv(floorVertices[3]);
+	glEnd();
+
+	glDisable(GL_TEXTURE_2D);
+	
+}
+void OPGL::drawScene() {
+
+	//glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+	glPushMatrix();
+		glRotatef(-_angle[1]/4, 1.0f, 0.0f, 0.0f);
+		glRotatef(-_angle[0]/4, 0.0f, 1.0f, 0.0f);
+
+		GLfloat lightColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+		GLfloat lightPos[] = {3.0,-3.0,3.0,0.3};//2 * BOX_SIZE * cos(_angle[0] * M_PI/180), 2*BOX_SIZE * sin(_angle[0] * M_PI/180), 4 * BOX_SIZE, 1.0f};
+		glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor);
+		glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+
+		// Show Light sphere
+		glPushMatrix();
+			glDisable(GL_LIGHTING);
+			glColor3f(1.0, 1.0, 0.0);
+			/* Draw a yellow ball at the light source. */
+			glTranslatef(-lightPos[0], -lightPos[1], -lightPos[2]);
+			glutSolidSphere(0.2, 5, 5);
+			glEnable(GL_LIGHTING);
+		glPopMatrix();
+
+		glFrontFace(GL_CW);  /* Switch face orientation.*/ 
+		glPushMatrix();
+			glTranslatef(0.0, -0.92, 0.0);
+			drawFloor();
+		
+			glFrontFace(GL_CCW);  /* Switch face orientation.*/ 
+			drawFloor();
+		glPopMatrix();
+		glBegin(GL_TRIANGLES);
+		for(unsigned int i=0; i < object->Faces.size();i+=3){
+			//if(i%3){
+				glColor3f(5.0f, 0.0f, 0.0f);
+				if(i + 2 < object->Faces.size()){
+					Vector v1 = *(object->Faces[i + 0]),
+					       v2 = *(object->Faces[i + 1]),
+					       v3 = *(object->Faces[i + 2]);
+					v2.sub(v1);
+					v3.sub(v1);
+					Vector n = v3.cross(v2);
+					n.normalize();
+					glNormal3f(n.x, n.y, n.z);
+				}
+			//}
+			for(int j = 0; j < 3;j++){
+				Vector *tmp=object->Faces[j+i];
+				//glTexCoord2f(tx[i], ty[i]);
+				glVertex3f( tmp->x, tmp->y, tmp->z );
 			}
 		}
-		Vector *tmp=object->Faces[i];
-		glVertex3f( tmp->x, tmp->y, tmp->z );
-	}
-	glEnd();
-	
+		glEnd();
+	glPopMatrix();
 	/*//Top face
 	glColor3f(1.0f, 1.0f, 0.0f);
 	glNormal3f(0.0, 1.0f, 0.0f);
