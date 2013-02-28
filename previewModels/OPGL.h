@@ -11,17 +11,21 @@
 #include "imageloader.h"
 #include "OB.h"
 
-void update(int value);
+void update();
 class OPGL {
 	float BOX_SIZE;
+	unsigned fps;
+	bool showPreformance;
     public:
-	OB *object;	// defined in init
+	OB object;	// defined in init
 	float _angle[2];
 	GLuint _textureId;
 	OPGL () {
+		showPreformance = false;
 		BOX_SIZE = 7.0f;
 		_angle[0] = 0;
 		_angle[1] = 0;
+		fps = 0;
 	}
 	~OPGL();
 	
@@ -34,7 +38,8 @@ class OPGL {
 	void onResize(int w, int h);
 	
 	void init();
-	void loop(int value);
+	void loop();
+	void PreformanceCheck(int value);
 	
 	GLuint loadTexture(Image* image);
 

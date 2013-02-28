@@ -1,4 +1,5 @@
 #include "OPGL.h" 
+#include <string>
 #include <math.h>
 bool fullscreen = false;
 float mousePos[2] = { 0, 0 };
@@ -88,65 +89,72 @@ void OPGL::init() {
 
 	/*object=new OB();
 	
-	object->Faces.push_back(new Vector(-BOX_SIZE / 2, BOX_SIZE / 2, -BOX_SIZE / 2));
-	object->Faces.push_back(new Vector(-BOX_SIZE / 2, BOX_SIZE / 2, BOX_SIZE / 2));
-	object->Faces.push_back(new Vector(BOX_SIZE / 2, BOX_SIZE / 2, BOX_SIZE / 2));
-	object->Faces.push_back(new Vector(BOX_SIZE / 2, BOX_SIZE / 2, -BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(-BOX_SIZE / 2, BOX_SIZE / 2, -BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(-BOX_SIZE / 2, BOX_SIZE / 2, BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(BOX_SIZE / 2, BOX_SIZE / 2, BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(BOX_SIZE / 2, BOX_SIZE / 2, -BOX_SIZE / 2));
 
 	//Bottom face
-	object->Faces.push_back(new Vector(-BOX_SIZE / 2, -BOX_SIZE / 2, -BOX_SIZE / 2));
-	object->Faces.push_back(new Vector(BOX_SIZE / 2, -BOX_SIZE / 2, -BOX_SIZE / 2));
-	object->Faces.push_back(new Vector(BOX_SIZE / 2, -BOX_SIZE / 2, BOX_SIZE / 2));
-	object->Faces.push_back(new Vector(-BOX_SIZE / 2, -BOX_SIZE / 2, BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(-BOX_SIZE / 2, -BOX_SIZE / 2, -BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(BOX_SIZE / 2, -BOX_SIZE / 2, -BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(BOX_SIZE / 2, -BOX_SIZE / 2, BOX_SIZE / 2));
+	Object.Faces.push_back(new Vector(-BOX_SIZE / 2, -BOX_SIZE / 2, BOX_SIZE / 2));
 
 	//Left face
-	object->Faces.push_back(object->Faces[4]);
-	object->Faces.push_back(object->Faces[7]);
-	object->Faces.push_back(object->Faces[1]);
-	object->Faces.push_back(object->Faces[0]);
+	Object.Faces.push_back(Object.Faces[4]);
+	Object.Faces.push_back(Object.Faces[7]);
+	Object.Faces.push_back(Object.Faces[1]);
+	Object.Faces.push_back(Object.Faces[0]);
 
 	//Right face
-	object->Faces.push_back(object->Faces[5]);
-	object->Faces.push_back(object->Faces[3]);
-	object->Faces.push_back(object->Faces[2]);
-	object->Faces.push_back(object->Faces[6]);
+	Object.Faces.push_back(Object.Faces[5]);
+	Object.Faces.push_back(Object.Faces[3]);
+	Object.Faces.push_back(Object.Faces[2]);
+	Object.Faces.push_back(Object.Faces[6]);
 
 	glEnd();
 
 	//Front face
-	object->Faces.push_back(object->Faces[7]);
-	object->Faces.push_back(object->Faces[6]);
-	object->Faces.push_back(object->Faces[2]);
-	object->Faces.push_back(object->Faces[1]);
+	Object.Faces.push_back(Object.Faces[7]);
+	Object.Faces.push_back(Object.Faces[6]);
+	Object.Faces.push_back(Object.Faces[2]);
+	Object.Faces.push_back(Object.Faces[1]);
 
 	//Back face
-	object->Faces.push_back(object->Faces[4]);
-	object->Faces.push_back(object->Faces[0]);
-	object->Faces.push_back(object->Faces[3]);
-	object->Faces.push_back(object->Faces[5]);
+	Object.Faces.push_back(Object.Faces[4]);
+	Object.Faces.push_back(Object.Faces[0]);
+	Object.Faces.push_back(Object.Faces[3]);
+	Object.Faces.push_back(Object.Faces[5]);
 	*/
 }
 OPGL::~OPGL(){
-	for(unsigned int i=0; i<object->Faces.size(); i++){
-		if(object->Faces[i])
-			delete object->Faces[i];
-		for(unsigned int j = 0; j < object->Faces.size(); j++)
-			if(j != i && object->Faces[j] == object->Faces[i])
-				object->Faces[j] = 0;
-		object->Faces[i] = 0;
-	}
-	delete object;
 }
 
-void OPGL::loop(int value) {
+void OPGL::loop() {
 	//_angle += 1.0f;
 	//if (_angle > 360) {
 	//	_angle -= 360;
 	//}
-	_angle[0] += 2.0f;
-	_angle[0] += 1.0f;
-	glutPostRedisplay();
-	glutTimerFunc(25, update, 0);
+	//_angle[0] += 2.0f;
+	//_angle[0] += 1.0f;
+}
+void OPGL::PreformanceCheck(int value){
+	if(!showPreformance)
+		return;
+	if (value) {
+		char *TempString = new char[22];
+		sprintf(
+			TempString,
+			"RANDOM SHOT, %d fps",
+			fps * 4
+		);
+ 
+		glutSetWindowTitle(TempString);
+		delete[] TempString;
+		TempString = 0;
+	} 
+	fps = 0;
+	 
 }
 
 GLuint OPGL::loadTexture(Image* image) {
@@ -189,6 +197,8 @@ void OPGL::drawFloor(void) {
 	
 }
 void OPGL::drawScene() {
+	if(showPreformance)
+		++fps;
 
 	//glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -221,13 +231,13 @@ void OPGL::drawScene() {
 			drawFloor();
 		glPopMatrix();
 		glBegin(GL_TRIANGLES);
-		for(unsigned int i=0; i < object->Faces.size();i+=3){
+		for(unsigned int i=0; i < object.Faces.size();i+=3){
 			//if(i%3){
 				glColor3f(5.0f, 0.0f, 0.0f);
-				if(i + 2 < object->Faces.size()){
-					Vector v1 = *(object->Faces[i + 0]),
-					       v2 = *(object->Faces[i + 1]),
-					       v3 = *(object->Faces[i + 2]);
+				if(i + 2 < object.Faces.size()){
+					Vector v1 = (object.Faces[i + 0]),
+					       v2 = (object.Faces[i + 1]),
+					       v3 = (object.Faces[i + 2]);
 					v2.sub(v1);
 					v3.sub(v1);
 					Vector n = v3.cross(v2);
@@ -236,9 +246,9 @@ void OPGL::drawScene() {
 				}
 			//}
 			for(int j = 0; j < 3;j++){
-				Vector *tmp=object->Faces[j+i];
+				Vector tmp=object.Faces[j+i];
 				//glTexCoord2f(tx[i], ty[i]);
-				glVertex3f( tmp->x, tmp->y, tmp->z );
+				glVertex3f( tmp.x, tmp.y, tmp.z );
 			}
 		}
 		glEnd();

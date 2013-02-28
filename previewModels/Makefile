@@ -3,14 +3,10 @@ CFLAGS = -Wall
 PROG = previewModel
 
 #find . -type f -name "*.cpp" -or -name "*.h"
-SRCS = main.cpp imageloader.cpp OPGL.cpp
-HEAD = Vector.h
+SRCS = main.cpp imageloader.cpp OPGL.cpp GL/glew.c
+HEAD = Vector.h cheet.h OB.h
 
-ifeq ($(shell uname),Darwin)
-	LIBS = -framework OpenGL -framework GLUT
-else
-	LIBS = -lglut -lGL -lGLU
-endif
+LIBS = -lglut -lGL -lGLU
 
 all: $(PROG)
 

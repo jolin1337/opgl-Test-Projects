@@ -2,7 +2,8 @@
 OPGL *opgl=new OPGL();
 
 void init();
-void update( int value);
+void update();
+void TimerFunction(int value);
 void onMouseClick( int button, int state, int x, int y );
 void onKeyDown(unsigned char key, int x, int y);
 void onResize(int w, int h);
@@ -12,8 +13,13 @@ void init() {
 	opgl->init();
 }
 
-void update(int value) {
-	opgl->loop(value);
+void update() {
+	opgl->loop();
+	glutPostRedisplay();
+}
+void tf(int value){
+	opgl->PreformanceCheck(value);
+	glutTimerFunc(250, tf, 4);
 }
 
 void onMouseClick( int button, int state, int x, int y ) {
