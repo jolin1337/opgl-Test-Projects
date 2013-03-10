@@ -6,14 +6,14 @@
 #include <string>
 #include <vector>
 #include "Vector.h"
-using namespace std;
+
 struct Color{
 	float r,g,b;
 };
 class OB {
-    public:
-	vector<Vector > vertices;
-	vector<Vector > Faces;
+public:
+	std::vector<Vector > vertices;
+	std::vector<std::vector<Vector *> > Faces;
 	Vector position;
 	Color material;
 	OB(){

@@ -28,7 +28,7 @@ static std::string circles[] = {
 	"...xxxxxxxxxx..x",
 	"...xxxxx.xxxx..x",
 	"..xxxx....xxxx.x",
-	"..xxx......xxx.x",
+	"..xxx..aa..xxx.x",
 	"..xxxx....xxxx.x",
 	"..xxxxx..xxxxx.x",
 	"...xxxxxxxxxx..x",
@@ -51,12 +51,14 @@ static void makeFloorTexture(void) {
 	for (t = 0; t < 16; t++) {
 		for (s = 0; s < 16; s++) {
 			if (circles[t][s] == 'x') {
-			 /* Nice green. */
 				loc[0] = 0xaf;
 				loc[1] = 0xaf;
 				loc[2] = 0x7f;
+			} else if(circles[t][s] == 'a'){
+				loc[0] = 0xff;
+				loc[1] = 0xff;
+				loc[2] = 0xff;
 			} else {
-			 /* Light gray. */
 				loc[0] = 0xf0;
 				loc[1] = 0xf0;
 				loc[2] = 0xe0;
@@ -126,6 +128,17 @@ static void drawFloor(void) {
 			glVertex3fv(floorVertices[3]);
 		glEnd();
 	}
+	for(int i=0;i<16;i++){
+		for(int j=0;j<16;j++){
+			if(circles[i][j] == 'x')
+				circles[i][j] = 'a';
+			else if(circles[i][j] == 'a')
+				circles[i][j] = 'x';
+			else
+				circles[i][j] = '.';
+		}
+	}
+	makeFloorTexture();
 }
 
 void redrawFloor(){
@@ -137,10 +150,12 @@ void redrawFloor(){
 	lightPosition[2] = 12*sin(lightAngle);
 	lightPosition[3] = 1.0;
 	
+	glutSolidSphere(0.2, 5, 5);
 	glPushMatrix();
 		/* Perform scene rotations based on user mouse input. */
 		glRotatef(angle2, 1.0, 0.0, 0.0);
 		glRotatef(angle, 0.0, 1.0, 0.0);
+		glTranslatef(-5,0,-5);
 		 
 		/* Tell GL new light source position. */
 		glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);

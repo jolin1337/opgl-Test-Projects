@@ -19,6 +19,9 @@ void settings(int v){
 	if(texture)
 		floorSettings(v);
 }
+void update(){
+	glutPostRedisplay();
+}
 
 int main(int argc, char **argv)
 {
@@ -66,6 +69,7 @@ int main(int argc, char **argv)
 	glutMotionFunc(motion);
 	glutKeyboardFunc(key);
 	glutSpecialFunc(special);
+	glutIdleFunc(update);
 	glutMainLoop();
 	return 0;             /* ANSI C requires main to return int. */
 }
