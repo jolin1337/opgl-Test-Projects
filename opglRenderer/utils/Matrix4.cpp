@@ -15,7 +15,13 @@ Matrix4 & Matrix4::mult(Matrix4 &m2){
 		m[i] =r[i];
 	return *this;
 }
-Matrix4 & Matrix4::mult(const int &t){
+Matrix4 & Matrix4::mult(int t){
+	for(int r=0;r<4;r++)
+		for(int c=0;c<4;c++)
+			matrix[r][c] *= t;
+	return *this;
+}
+Matrix4 & Matrix4::mult(double t){
 	for(int r=0;r<4;r++)
 		for(int c=0;c<4;c++)
 			matrix[r][c] *= t;
@@ -166,6 +172,12 @@ Matrix4 Matrix4::operator *(Matrix4 m){
 	return Matrix4::mult(*this, m);
 }
 Matrix4 Matrix4::operator *(int t){
+	return Matrix4::mult(*this, t);
+}
+Matrix4 Matrix4::operator *(float t){
+	return Matrix4::mult(*this, t);
+}
+Matrix4 Matrix4::operator *(double t){
 	return Matrix4::mult(*this, t);
 }
 

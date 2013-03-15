@@ -40,6 +40,7 @@ public:
 
 	Vector3 & add(float p1,float p2,float p3){this->x += p1;this->y += p2;this->z += p3;return *this;}
 	Vector3 & add(Vector3 *v3){this->x += v3->x;this->y += v3->y;this->z += v3->z;return *this;}
+	Vector3 & add(Vector3 v3){return add(&v3);}
 
 	Vector3 & sub(float p1,float p2,float p3){return add(-p1,-p2,-p3);}
 	Vector3 & sub(Vector3 *v3){return add(-v3->x, -v3->y, -v3->z);}

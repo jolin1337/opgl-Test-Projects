@@ -7,7 +7,7 @@ light: ./lights/arc
 cube: ./first_cube/arc
 object: ./Object_Based/man
 
-./Object_Based/man: Object_Based/main.cpp Object_Based/setup.h Object_Based/config.h $(utils)
+./Object_Based/man: Object_Based/main.cpp Object_Based/Data.h Object_Based/setup.h Object_Based/config.h $(utils)
 	$(CC) -o ./Object_Based/man Object_Based/main.cpp ./utils/Matrix4.cpp $(LIBS)
 
 ./lights/arc: lights/lighting_arc.cpp $(utils)
