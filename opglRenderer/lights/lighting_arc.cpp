@@ -6,9 +6,6 @@
 #include <GL/glew.h>
 /* Using the GLUT library for the base windowing setup */
 #include <GL/glut.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 #include "utils/Matrix4.h"
 /* ADD GLOBAL VARIABLES HERE */
@@ -235,8 +232,8 @@ int init_resources(void) {/*
 		1.0, 1.0,
 		0.0, 1.0,
 	};
-	for (int i = 1; i < 6; i++)
-		memcpy(&cube_texcoords[i*4*2], &cube_texcoords[0], 2*4*sizeof(GLfloat));
+	//for (int i = 1; i < 6; i++)
+	//	memcpy(&cube_texcoords[i*4*2], &cube_texcoords[0], 2*4*sizeof(GLfloat));
 	glGenBuffers(1, &vbo_cube_texcoords);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_cube_texcoords);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(cube_texcoords), cube_texcoords, GL_STATIC_DRAW);
@@ -333,10 +330,10 @@ void idle() {
 
 	Matrix4 m_transform = projection * view * model * anim;
 	
-	glm::mat3 m_3x3_inv_transp = glm::mat3(1.0f);
+	Matrix4 m_3x3_inv_transp = Matrix4();
 	glUseProgram(program);
 
-	glUniformMatrix3fv(uniform_m_3x3_inv_transp, 1, GL_FALSE, glm::value_ptr(m_3x3_inv_transp));
+	glUniformMatrix3fv(uniform_m_3x3_inv_transp, 1, GL_FALSE, m_3x3_inv_transp);
 	glUniformMatrix4fv(uniform_m_transform, 1, GL_FALSE, m_transform.getMatrix4());
 
 	glutPostRedisplay();

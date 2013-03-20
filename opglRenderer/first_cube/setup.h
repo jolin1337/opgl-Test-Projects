@@ -1,5 +1,6 @@
 /* Using the standard output for fprintf */
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <math.h>
 /* Use glew.h instead of gl.h to get all the GL prototypes declared */

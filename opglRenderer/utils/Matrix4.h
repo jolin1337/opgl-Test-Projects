@@ -43,14 +43,18 @@ public:
 		return Matrix4::mult(*this, v);
 	}
 
+	operator float *(){
+		return (float *)(&(matrix[0]));
+	}
+
 	static Matrix4 mult(Matrix4 m1, Matrix4 m2){
 		return m1.mult(m2);
 	}
 	static Vector3 mult(Matrix4 m, Vector3 v){
 		Vector3 res;
 		res.x = m[0][0] * v.x + m[0][1] * v.y + m[0][2] * v.z + m[3][0];
-		res.y = m[2][0] * v.x + m[1][1] * v.y + m[1][2] * v.z + m[3][1];
-		res.z = m[1][0] * v.x + m[2][1] * v.y + m[2][2] * v.z + m[3][2];
+		res.y = m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z + m[3][1];
+		res.z = m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z + m[3][2];
 		return res;
 	}
 	static Matrix4 mult(Matrix4 m1, float f){

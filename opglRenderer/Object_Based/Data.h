@@ -197,7 +197,7 @@ public:
 						ifs.get();
 						// vertex-normal linking:
 						ifs >> f2;
-						vertices[faces[faces.size()-1]].normal = normals[f2];
+						vertices[faces[faces.size()-1]].normal = normals[f2-1];
 					}
 
 					ifs >> f2;
@@ -220,7 +220,7 @@ public:
 						ifs.get();
 						// vertex-normal linking:
 						ifs >> f2;
-						vertices[faces[faces.size()-1]].normal = normals[f2];
+						vertices[faces[faces.size()-1]].normal = normals[f2-1];
 					}
 
 					ifs >> f2;
@@ -243,7 +243,10 @@ public:
 						ifs.get();
 						// vertex-normal linking:
 						ifs >> f2;
-						vertices[faces[faces.size()-1]].normal = normals[f2];
+						vertices[faces[faces.size()-1]].normal = normals[f2-1];
+					}
+					else if(vertices[faces[faces.size()-1]].normal.norm() == 0){
+
 					}
 					break;
 				case 'u':
@@ -472,8 +475,8 @@ struct VertexGroup {
 class Bone{
 public:
 	std::vector<VertexGroup> vertices;
-	Vector3 rotation, translation, scale;
-	Bone():scale(1,1,1) {}
+	Matrix4 rotation, translation, scale;
+	Bone() {}
 
 	void emptyPosition(){
 		for (std::vector<VertexGroup>::iterator it = vertices.begin(); it != vertices.end(); ++it) {
@@ -487,10 +490,7 @@ public:
 	}
 	void refresh(bool reset = true){
 		for (std::vector<VertexGroup>::iterator it = vertices.begin(); it != vertices.end(); ++it) {
-			Matrix4 boneMatrix = Matrix4().Translate(translation * it->intencity).Scale(scale)
-								.Rotate(rotation.x, Vector3(it->intencity, 0, 0))
-								.Rotate(rotation.y, Vector3(0, it->intencity, 0))
-								.Rotate(rotation.z, Vector3(0, 0, it->intencity));
+			Matrix4 boneMatrix = rotation * translation * scale;
 			if(reset)
 				it->vertex->position = Matrix4::mult(boneMatrix, it->vertex->localPosition);
 			else

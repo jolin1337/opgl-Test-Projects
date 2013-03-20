@@ -7,9 +7,6 @@
 #include <GL/glew.h>
 /* Using the GLUT library for the base windowing setup */
 #include <GL/glut.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 #include "./tex/hatt_texture.c"
 #include "utils/Matrix4.h"
@@ -337,24 +334,6 @@ void printMat(T m){
 
 }
 int main(int argc, char* argv[]) {
-	/*Matrix4 model = Matrix4().Translate(Vector3(0.0, 0.0, -4.0)),
-			view = Matrix4().lookAt(Vector3(0.0, 2.0, 0.0), Vector3(0.0, 0.0, -4.0), Vector3(0.0, 1.0, 0.0)),
-			projection = Matrix4().Perspective(45.0f, 1.0f*screen_width/screen_height, 0.1f, 10.0f);
-
-	Matrix4 m_transform;
-
-	glm::mat4 model2 = glm::translate(glm::mat4(1.0f), glm::vec3(0.0, 0.0, -4.0));
-	glm::mat4 view2 = glm::lookAt(glm::vec3(0.0, 2.0, 0.0), glm::vec3(0.0, 0.0, -4.0), glm::vec3(0.0, 1.0, 0.0));
-	glm::mat4 projection2 = glm::perspective(45.0f, 1.0f*screen_width/screen_height, 0.1f, 10.0f);
-	glm::mat4 m_transform2;
-	
-	printMat<Matrix4>(view);
-	printMat<glm::mat4>(view2);
-
-	m_transform = model * projection;
-	m_transform2 = projection2 * model2;
-
-	return 0;*/
 	/* Glut-related initialising functions */
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA|GLUT_ALPHA|GLUT_DOUBLE|GLUT_DEPTH);
