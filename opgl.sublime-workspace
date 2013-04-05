@@ -4,16 +4,132 @@
 		"selected_items":
 		[
 			[
+				"render",
+				"renderPrep"
+			],
+			[
+				"im",
+				"image"
+			],
+			[
+				"IM",
+				"image"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"rota",
+				"rotationSpeed"
+			],
+			[
+				"ex",
+				"explode"
+			],
+			[
+				"exp",
+				"exploded"
+			],
+			[
+				"bim",
+				"bim_count"
+			],
+			[
+				"rot",
+				"rotationSpeed"
+			],
+			[
+				"onKeyDo",
+				"onKeyDownSpecialN"
+			],
+			[
+				"cube",
+				"cube2"
+			],
+			[
+				"cu",
+				"cube"
+			],
+			[
+				"cpo",
+				"cpos"
+			],
+			[
+				"cub",
+				"cube"
+			],
+			[
+				"allo",
+				"allocKB"
+			],
+			[
+				"set",
+				"setPosition"
+			],
+			[
+				"c",
+				"cube2"
+			],
+			[
+				"se",
+				"setPosition"
+			],
+			[
+				"of",
+				"offset"
+			],
+			[
+				"sc",
+				"screen_width"
+			],
+			[
+				"fps",
+				"r_fps"
+			],
+			[
+				"Pre",
+				"PreformanceCheckIRL"
+			],
+			[
+				"move",
+				"moveForward"
+			],
+			[
+				"norma",
+				"normal"
+			],
+			[
+				"scre",
+				"screen_height"
+			],
+			[
+				"scr",
+				"screen_width"
+			],
+			[
+				"onK",
+				"onKeyDownSpecial"
+			],
+			[
+				"fir",
+				"first_game"
+			],
+			[
+				"rm",
+				"rmax"
+			],
+			[
+				"getR",
+				"getRotationX"
+			],
+			[
 				"firs",
 				"first_game"
 			],
 			[
 				"lig",
 				"lights"
-			],
-			[
-				"fir",
-				"first_cube"
 			],
 			[
 				"first",
@@ -28,56 +144,39 @@
 	"buffers":
 	[
 		{
-			"file": "opglRenderer/first_game/main.cpp",
+			"file": "Render/Explotion/up_main.cpp",
 			"settings":
 			{
-				"buffer_size": 4466,
+				"buffer_size": 3095,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "opglRenderer/first_game/Character.h",
+			"file": "Render/Explotion/Debris.h",
 			"settings":
 			{
-				"buffer_size": 95,
-				"line_ending": "Unix",
-				"name": "#include \"Matrix4.h\""
-			}
-		},
-		{
-			"file": "opglRenderer/first_game/shader.f.glsl",
-			"settings":
-			{
-				"buffer_size": 400,
+				"buffer_size": 1747,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/jolin1337/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+			"file": "Render/Explotion/Smoke.h",
 			"settings":
 			{
-				"buffer_size": 363,
+				"buffer_size": 7491,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "opglRenderer/first_game/shader.v.glsl",
+			"file": "Render/Explotion/Bim.cpp",
 			"settings":
 			{
-				"buffer_size": 368,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "opgl.sublime-project",
-			"settings":
-			{
-				"buffer_size": 496,
+				"buffer_size": 1011,
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "opgl-render",
+	"build_system": "explotion",
 	"command_palette":
 	{
 		"height": 72.0,
@@ -105,14 +204,53 @@
 	},
 	"file_history":
 	[
-		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opgl.sublime-project",
 		"/home/jolin1337/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
-		"/home/jolin1337/projekts/c++/opgl-Test-Projects/oMake",
 		"/home/jolin1337/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Bim.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Particle.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Particle.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Image/Image.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Image/Image.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Object_Based/setup.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/previewModels/OPGL.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/previewModels/OPGL.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Makefile",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Bim.cpp",
+		"/home/jolin1337/projekts/projects/3D-View/worker.js",
+		"/home/jolin1337/MineSweaper/Brick.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/Particle.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/Debris.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/Particle.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/Bim.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/Bim.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/up_main.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/main.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/Makefile",
+		"/home/jolin1337/show_image/Image/Image.h",
+		"/home/jolin1337/show_image/Image/Image.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/main.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opgl.sublime-project",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Explotion/Particle",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Makefile",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/Data.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/preformance.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/Character.h",
+		"/home/jolin1337/usb/explosion.c",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/previewModels/OB.h",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/setup.h",
-		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/shader.v.glsl",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Object_Based/main.cpp",
-		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Makefile"
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Object_Based/setup.h",
+		"/home/jolin1337/projekts/c++/test.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/rect.o",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/cube.o",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/shader.f.glsl",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/shader.v.glsl",
+		"/home/jolin1337/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/jolin1337/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/first_game/crazy.o",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opglRenderer/Makefile.win",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Makefile",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/oMake"
 	],
 	"find":
 	{
@@ -130,6 +268,37 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"+k",
+			"but",
+			"left",
+			"mark",
+			"cursor",
+			"m",
+			"uniform_mytexture",
+			"*energy",
+			"debris[i].",
+			"[2]",
+			"[1]",
+			"[0]",
+			"debris[i].",
+			"[0]",
+			"[1]",
+			"[2]",
+			"[1]",
+			"[0]",
+			"particles[i].",
+			"particles",
+			"glutKeyboardFunc",
+			"ctrl",
+			"GL_Object",
+			">=",
+			"<=",
+			"->",
+			"PreformanceCheck",
+			"obj.",
+			"onReshape",
+			"player.",
+			"run",
 			"Object_Based",
 			"first_game"
 		],
@@ -139,6 +308,22 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
+			".z",
+			".y",
+			".x",
+			"",
+			".x",
+			".y",
+			".z",
+			".y",
+			".x",
+			"",
+			"GLobject",
+			">",
+			"<",
+			".",
+			"OBJ->",
 			"lights",
 			"Object_Based"
 		],
@@ -151,23 +336,23 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "opglRenderer/first_game/main.cpp",
+					"file": "Render/Explotion/up_main.cpp",
 					"settings":
 					{
-						"buffer_size": 4466,
+						"buffer_size": 3095,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								848,
-								848
+								1895,
+								1895
 							]
 						],
 						"settings":
@@ -176,141 +361,88 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 389.0,
+						"translation.y": 1031.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "opglRenderer/first_game/Character.h",
+					"file": "Render/Explotion/Debris.h",
 					"settings":
 					{
-						"buffer_size": 95,
+						"buffer_size": 1747,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								95,
-								95
+								56,
+								56
 							]
 						],
 						"settings":
 						{
-							"auto_name": "#include \"Matrix4.h\"",
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 70.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "opglRenderer/first_game/shader.f.glsl",
+					"file": "Render/Explotion/Smoke.h",
 					"settings":
 					{
-						"buffer_size": 400,
+						"buffer_size": 7491,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								49,
-								49
+								4538,
+								4538
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C.tmLanguage",
+							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1767.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/home/jolin1337/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+					"file": "Render/Explotion/Bim.cpp",
 					"settings":
 					{
-						"buffer_size": 363,
+						"buffer_size": 1011,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								190,
-								190
+								180,
+								180
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 32.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "opglRenderer/first_game/shader.v.glsl",
-					"settings":
-					{
-						"buffer_size": 368,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "opgl.sublime-project",
-					"settings":
-					{
-						"buffer_size": 496,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								230,
-								230
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 88.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -324,7 +456,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -351,7 +483,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 100.0
+		"height": 156.0
 	},
 	"replace":
 	{
@@ -378,6 +510,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 165.0,
 	"status_bar_visible": true
 }

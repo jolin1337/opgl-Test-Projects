@@ -1,7 +1,6 @@
 #ifndef _OB_
 #define _OB_
 #include <iostream>
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -13,7 +12,7 @@ struct Color{
 class OB {
 public:
 	std::vector<Vector > vertices;
-	std::vector<std::vector<Vector *> > Faces;
+	std::vector<Vector > Faces;
 	Vector position;
 	Color material;
 	OB(){
@@ -25,13 +24,13 @@ public:
 	~OB(){
 	}
 
-	static OB loadFromFile(string file){
-		ifstream o;
-		o.open( file.c_str(), ifstream::in );
+	static OB loadFromFile(std::string file){
+		std::ifstream o;
+		o.open( file.c_str(), std::ifstream::in );
 		OB ans;
-		vector<Vector > V;
+		std::vector<Vector > &V = ans.vertices;
 		while (o.good()){
-			string s="";
+			std::string s="";
 			o>>s;
 			if(s=="v"){
 				float x,y,z;

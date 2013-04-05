@@ -21,7 +21,7 @@ class OPGL {
 	float _angle[2];
 	GLuint _textureId;
 	OPGL () {
-		showPreformance = false;
+		showPreformance = true;
 		BOX_SIZE = 7.0f;
 		_angle[0] = 0;
 		_angle[1] = 0;
