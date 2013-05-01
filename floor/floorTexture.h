@@ -11,7 +11,7 @@
 #define M_PI 3.14159265
 #endif
 
-static int linearFiltering = 0, useMipmaps = 0,
+static int linearFiltering = 1, useMipmaps = 1,
 	   showTexture = 1;
 
 

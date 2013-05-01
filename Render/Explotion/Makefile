@@ -7,7 +7,7 @@ CC=g++
 LIBS= $(jpgLIB) $(opglLIB)
 utils=utils/Matrix4.h utils/Vector3.h utils/Vector.h
 utils_cpp=utils/Matrix4.cpp
-dep=../first_game/config.h Particle.h Debris.h Bim.h Smoke.h
+dep=../first_game/config.h Particle.h Debris.h Bim.h Smoke.h BallExplotion.h
 dep_cpp=up_main.cpp Particle.cpp Bim.cpp
 
 all: exp

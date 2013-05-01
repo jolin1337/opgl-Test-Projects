@@ -4,6 +4,70 @@
 		"selected_items":
 		[
 			[
+				"get",
+				"getY"
+			],
+			[
+				"for",
+				"for	For Loop"
+			],
+			[
+				"blo",
+				"blocks"
+			],
+			[
+				"up",
+				"update"
+			],
+			[
+				"Blo",
+				"BlockSet4"
+			],
+			[
+				"co",
+				"collidesWith"
+			],
+			[
+				"BL",
+				"Block"
+			],
+			[
+				"Bl",
+				"Block"
+			],
+			[
+				"B",
+				"Block"
+			],
+			[
+				"rota",
+				"rotation"
+			],
+			[
+				"col",
+				"collideFloor"
+			],
+			[
+				"sc",
+				"screen_width"
+			],
+			[
+				"scr",
+				"screen_height"
+			],
+			[
+				"Ve",
+				"Vector"
+			],
+			[
+				"Vec",
+				"Vector2"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
 				"ma",
 				"main	main()"
 			],
@@ -22,10 +86,6 @@
 			[
 				"def",
 				"define"
-			],
-			[
-				"rota",
-				"rotationSpeed"
 			],
 			[
 				"ex",
@@ -84,10 +144,6 @@
 				"offset"
 			],
 			[
-				"sc",
-				"screen_width"
-			],
-			[
 				"fps",
 				"r_fps"
 			],
@@ -106,10 +162,6 @@
 			[
 				"scre",
 				"screen_height"
-			],
-			[
-				"scr",
-				"screen_width"
 			],
 			[
 				"onK",
@@ -147,6 +199,62 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "BlockSet/Block/Block.h",
+			"settings":
+			{
+				"buffer_size": 504,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "BlockSet/Block/Block.cpp",
+			"settings":
+			{
+				"buffer_size": 697,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "BlockSet/BlockSet.h",
+			"settings":
+			{
+				"buffer_size": 721,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "BlockSet/BlockSet.cpp",
+			"settings":
+			{
+				"buffer_size": 3319,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "World.cpp",
+			"settings":
+			{
+				"buffer_size": 3077,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "main.cpp",
+			"settings":
+			{
+				"buffer_size": 3777,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 517,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Makefile/Make.sublime-build",
 	"command_palette":
@@ -176,15 +284,28 @@
 	},
 	"file_history":
 	[
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/tetan.sublime-project",
+		"/home/jolin1337/projekts/c++/oopp/Uppgift4/sortMetoder.cpp",
+		"/home/jolin1337/projekts/c++/oopp/Uppgift4/Uppgift3/linked_list.cpp",
+		"/home/jolin1337/projekts/c++/GameEngine/main.cpp",
+		"/home/jolin1337/projekts/c++/GameEngine/NSGameEngine.cpp",
+		"/home/jolin1337/projekts/c++/GameEngine/WorldObject.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/World.h",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/World.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/BlockSet/Block/Block.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/BlockSet/Block/Block.h",
+		"/home/jolin1337/projekts/c++/oopp/Uppgift3/main.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/main.cpp",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/Block/Block.h",
+		"/home/jolin1337/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/Block.h",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/opgl.sublime-project",
-		"/home/jolin1337/projekts/c++/oopp/Uppgift3/linked_list.cpp",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/Makefile",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/Data.h",
-		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Tetris/main.cpp",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/first_game/tempPhysics.cpp",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/BallExplotion.h",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/up_main.cpp",
-		"/home/jolin1337/projekts/c++/oopp/Uppgift3/main.cpp",
+		"/home/jolin1337/projekts/c++/oopp/Uppgift3/linked_list.cpp",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/main.cpp",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/first_game/Character.h",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/first_game/main.cpp",
@@ -200,7 +321,6 @@
 		"/home/jolin1337/projekts/Latex/CV/LATCV.tex",
 		"/home/jolin1337/projekts/Latex/CV/aboutme.txt",
 		"/home/jolin1337/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
-		"/home/jolin1337/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Bim.h",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Explotion/Image/Image.cpp",
 		"/home/jolin1337/projekts/c++/opgl-Test-Projects/Render/Object_Based/setup.h",
@@ -258,6 +378,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cout",
+			"collideFloor",
+			"MAX_RAND",
+			"block",
+			"glutPassiveMotionFunc",
+			"BloackSet4",
 			"Fritids",
 			"+k",
 			"but",
@@ -327,14 +453,203 @@
 	"groups":
 	[
 		{
+			"selected": 4,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "BlockSet/Block/Block.h",
+					"settings":
+					{
+						"buffer_size": 504,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								388,
+								388
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "BlockSet/Block/Block.cpp",
+					"settings":
+					{
+						"buffer_size": 697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								349,
+								349
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "BlockSet/BlockSet.h",
+					"settings":
+					{
+						"buffer_size": 721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								566,
+								566
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "BlockSet/BlockSet.cpp",
+					"settings":
+					{
+						"buffer_size": 3319,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1128,
+								1128
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 221.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "World.cpp",
+					"settings":
+					{
+						"buffer_size": 3077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1891,
+								1891
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 600.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "main.cpp",
+					"settings":
+					{
+						"buffer_size": 3777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3312,
+								3312
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1230.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Makefile",
+					"settings":
+					{
+						"buffer_size": 517,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								447,
+								447
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{

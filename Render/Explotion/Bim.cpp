@@ -12,8 +12,8 @@ void Bim::render(){
 	else if (!exploded) {
 		glBegin (GL_POINTS);
 		for (int i = 0; i < PARTICLES; i++){
-			if(particles[i].hasEnergy())
-				particles[i].render();
+		//	if(particles[i].hasEnergy())
+		//		particles[i].render();
 		}
 		glEnd();
 

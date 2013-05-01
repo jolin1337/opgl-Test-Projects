@@ -5,11 +5,17 @@
 
 #include "Bim.h"
 #include "Smoke.h"
+#include "BallExplotion.h"
 
 const GLuint BIM_COUNT = 1;
+
+// Overal Test:
 Bim bims[BIM_COUNT];
-Smoke sma("img/exptextures3.jpg", AIR, 10.0f),
-	  smf("img/exptextures3.jpg", FIRE, 2.0f);
+
+// Smoke Test:
+Smoke sma("img/exptextures3.jpg", AIR, 10.0f);	// Air
+Smoke smf(FIRE, 2.0f);	// Fire
+BallExplotion bomb;
 
 int fuel = 0;
 
@@ -38,6 +44,8 @@ int main(int argc, char *argv[]) {
 void init(void){
 	//glutFullScreen();
 
+	smf.setImage(sma.getImage());
+
 	glEnable(GL_BLEND);
 	glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -45,11 +53,6 @@ void init(void){
 	glutIdleFunc (idle);
 	glutDisplayFunc (display);
 	glutReshapeFunc (reshape);
-	/*for (int i = 0; i < BIM_COUNT; i++) {
-		bims[i].position.x = 10 * ((GLfloat) rand ()) / ((GLfloat) RAND_MAX) - 5.0;
-		bims[i].position.y = 10 * ((GLfloat) rand ()) / ((GLfloat) RAND_MAX) - 5.0;
-		bims[i].position.z = 10 * ((GLfloat) rand ()) / ((GLfloat) RAND_MAX) - 5.0;
-	}*/
 }
 void reshape (int w, int h){
 	glViewport (0.0, 0.0, (GLfloat) w, (GLfloat) h);
@@ -69,6 +72,7 @@ void idle(void){
 		sma.update();
 		smf.update();
 	}
+	bomb.update();
 	glutPostRedisplay ();
 }
 void display (void){
@@ -82,32 +86,24 @@ void display (void){
 	glTranslatef (0.0, 0.0, -3.0);
 	glRotatef (40.0f, 1.0f, 0.0f, 0.0f);
 
-	glTranslatef(0.0f, -size/2, 0.0f);
-	glColor3f(255.0f, 0.0f, 0.0f);
-	glBegin(GL_QUADS);
-	glVertex3f(-1.0f, 0.0f, -1.0f);
-	glVertex3f(-1.0f, 0.0f, 1.0f);
-	glVertex3f(1.0f, 0.0f, 1.0f);
-	glVertex3f(1.0f, 0.0f, -1.0f);
-	glEnd();
-	glTranslatef(0.0f, size/2, 0.0f);
-
-	glPushMatrix();
+	/*glPushMatrix();
 	glScalef(size, size, size);
 	for (int i = 0; i < BIM_COUNT; i++) {
 		bims[i].render();
 	}
 	glPopMatrix();
-	glScalef(size*1.5f, size*1.5f, size*1.5f);
+	*/
+	//glScalef(size*1.5f, size*1.5f, size*1.5f);
 	if(bims[0].hasDetonated() && !bims[0].hasExploded()){
 		sma.renderPrep();
 		sma.render(Vector3(-40.0f, 0.0f, 0.0f));
 		smf.renderPrep();
-		for (int j = 0; j < 3; j++) {
+		//for (int j = 0; j < 3; j++) {
 			smf.render(Vector3(-40.0f, 0.0f, 0.0f));
-		}
+		//}
 	}
 
+	bomb.render();
 
 	glutSwapBuffers ();
 }

@@ -52,7 +52,7 @@ public:
 
 	}
 	void render(){
-		glColor3f(color.x, color.y, color.z);
+		glColor4f(color.x, color.y, color.z, energy);
 
 		glPushMatrix();
 			

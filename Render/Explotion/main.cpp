@@ -36,6 +36,7 @@
 #include <sys/types.h>
 
 
+
 #define NUM_PARTICLES    10000         /* Number of particles  */
 #define NUM_DEBRIS       30            /* Number of debris     */
 

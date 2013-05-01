@@ -61,6 +61,7 @@ public:
 	Smoke(std::string src):imgID(0), height(1.05f), radius(4.0f){
 		loadSmoke(src);
 	}
+	Smoke(ELEMENT e, float radius):imgID(0), height(1.05f), smokeType(e), radius(radius){}
 	Smoke(std::string src, ELEMENT e):imgID(0), height(1.05f), smokeType(e), radius(4.0f){
 		loadSmoke(src);
 	}
@@ -72,6 +73,17 @@ public:
 	}
 	void loadSmoke(std::string src){
 		image.readImage(src);
+		configSmoke();
+	}
+	void setImage(Image img){
+		image.deleteImage();
+		image = img;
+		configSmoke();
+	}
+	Image getImage(){
+		return image;
+	}
+	void configSmoke(){
 		for (int i = 0; i < CLOUDS; i++){
 			refresh(i);
 			clouds[i].addEnergy(2.5);
@@ -168,13 +180,13 @@ public:
 			mushroom_texture
 		);*/
 		
+		glRotatef(camRot.x, 1.0f, 0.0f, 0.0f);
+		glRotatef(camRot.y, 0.0f, 1.0f, 0.0f);
+		glRotatef(camRot.z, 0.0f, 0.0f, 1.0f);
 		glEnable(GL_TEXTURE_2D);
 		for (int i = 0; i < CLOUDS; i++) {
 			glPushMatrix();
 			glTranslatef(clouds[i].position.x,clouds[i].position.y,clouds[i].position.z);
-			glRotatef(camRot.x, 1.0f, 0.0f, 0.0f);
-			glRotatef(camRot.y, 0.0f, 1.0f, 0.0f);
-			glRotatef(camRot.z, 0.0f, 0.0f, 1.0f);
 
 			/*// Ring of fire:
 			glBegin(GL_TRIANGLES);
@@ -269,7 +281,7 @@ public:
 		a = a > 255?255:(a<0?0:a);
 	}
 	void setAirColor(unsigned char &r, unsigned char &g, unsigned char &b, unsigned char &a){
-		a = ((r + g + b)/10.0f);
+		a = ((r + g + b)/8.0f);
 		a = a > 255?255:(a<0?0:a);
 	}
 };

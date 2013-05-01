@@ -59,6 +59,9 @@ public:
 		return *this;
 	}
 	~Image(){
+		deleteImage();
+	}
+	void deleteImage(){
 		if(!loadFailed)
 			delete []pxls;	
 		loadFailed = true;

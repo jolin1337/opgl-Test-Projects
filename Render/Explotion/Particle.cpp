@@ -1,6 +1,8 @@
 #include "Particle.h"
 
+
 void Particle::update(){
+	speed.add(force * -mass);
 	position.x += speed.x * 0.2 * energy;
 	position.y += speed.y * 0.2 * energy;
 	position.z += speed.z * 0.2 * energy;
@@ -18,12 +20,12 @@ void Particle::update(){
 	if (color.z < 0.0)
 		color.z = 0.0;
 
-	energy -= factor;// / ((GLfloat) rand ());
+	energy -= fadeSpeed;// / ((GLfloat) rand ());
 	if(energy < 0.0)
 		energy = 0.0;
 }
 void Particle::render(){
-	glColor3f(color.x, color.y, color.z);
+	glColor4f(color.x, color.y, color.z, energy);
 	glVertex3f(position.x, position.y, position.z);
 }
 

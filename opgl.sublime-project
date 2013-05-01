@@ -2,7 +2,10 @@
 	"folders":
 	[
 		{
-			"path": "/home/jolin1337/projekts/c++/opgl-Test-Projects"
+			"path": "/home/jolin1337/projekts/c++/opgl-Test-Projects/Render"
+		},
+		{
+			"path": "/home/jolin1337/projekts/c++/opgl-Test-Projects/previewModels"
 		}
 	],
 	"build_systems":
@@ -10,20 +13,9 @@
 		{
 			"name": "opgl_game",
 			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
-			"working_dir": "$project_path/opglRenderer/",
+			"working_dir": "$project_path/Renderer/",
 			"cmd" : ["make"],
 			"selector": "main.cpp",
-			"variants": 
-			[
-				{
-					"name": "first_game",
-					"cmd": ["make", "run_game"]
-				},
-				{
-					"name": "Object_Based",
-					"cmd": ["make", "run_object"]
-				}
-			],
 			"windows":
 			{
 				"cmd": ["make", "--makefile=Makefile.win"]
@@ -35,7 +27,7 @@
 		},
 		{
 			"name": "opgl_object",
-			"working_dir": "$project_path/opglRenderer/",
+			"working_dir": "$project_path/Renderer/",
 			"cmd": ["make", "run_object"]
 		},
 		{

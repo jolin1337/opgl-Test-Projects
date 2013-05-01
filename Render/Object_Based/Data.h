@@ -1,10 +1,15 @@
 #ifndef _GL_DATA_OBJECT_H_
 #define _GL_DATA_OBJECT_H_
+
+#include <GL/glew.h>
+#include <GL/glut.h>
+
 #include <fstream>
 #include <vector>
 #include "./utils/Vector3.h"
 #include "./utils/Matrix4.h"
 
+#include "config.h"
 
 
 struct ShaderInfo {

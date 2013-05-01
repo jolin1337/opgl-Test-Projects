@@ -41,6 +41,9 @@ public:
 	Vector3 getPosition() const{
 		return position;
 	}
+	Vector3 getVelocity() const{
+		return dynamics.velocity;
+	}
 	void moveLeft(float x){
 		position.x += x*sin(angle[X]);
 		position.z += x*cos(angle[X]);
